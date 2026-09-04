@@ -1,0 +1,52 @@
+# Bytecode / caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Secrets — never commit keys
+.env
+.env.*
+!.env.example
+*.pem
+id_rsa*
+
+# Operator-local Grok / project memory (not part of the published tree)
+.grok/
+
+# Runtime state that is machine-local
+multi_agent/audit.jsonl
+multi_agent/pending.json
+edge_bridge/board.jsonl
+edge_bridge/namespaces/**/scratch.md
+
+# Large or personal data
+knowledge/indexes/*.bin
+rf_residual_stream/data/**
+!rf_residual_stream/data/.gitkeep
+*.wav
+*.iq
+*.sdb3
+*.pcap
+*.h5
+*.pt
+*.bin
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
