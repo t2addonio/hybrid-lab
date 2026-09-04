@@ -1,0 +1,30 @@
+# RF domain configuration for shared Knowledge RAG
+domain: rf
+description: >
+  Spectrum scans, frequency notes, coordination examples, and residual-style
+  analysis artifacts used by the rf specialist and the rf_residual_stream project.
+
+# Local roots (relative to knowledge/ or absolute). 
+# Operator should add the real SDR / scan drive here, e.g.:
+#   - /Volumes/rf_data
+#   - /path/to/personal_show_notes
+roots:
+  - ../../rf_residual_stream/data
+  - ../../rf_residual_stream/docs
+  # Uncomment / add when the external drive is available:
+  # - /Volumes/rf_data
+
+# Preferred file types for this domain (scanner still respects global defaults)
+extensions:
+  - .csv
+  - .md
+  - .txt
+  - .json
+  - .log
+
+# Notes for future residual-stream style features
+residual_hooks:
+  - occupancy_vector
+  - peak_list
+  - intermod_candidates
+  - venue_context

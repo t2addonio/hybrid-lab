@@ -1,0 +1,35 @@
+# Shared Knowledge RAG defaults
+# Local-first. No cloud services required.
+
+version: "0.1.0-scaffold"
+
+# Roots that are always allowed to be scanned (relative to knowledge/ or absolute)
+allowed_roots:
+  - ../docs
+  - ../catalog
+  - ../templates
+  - ../multi_agent
+  - ../rf_residual_stream
+  # Operator can add absolute paths (e.g. /Volumes/rf_data) in domains/*.yaml
+
+# Default retrieval
+default_k: 6
+snippet_chars: 400
+
+# File types the base scanner will attempt to extract text from
+supported_extensions:
+  - .md
+  - .txt
+  - .csv
+  - .json
+  - .yaml
+  - .yml
+  - .py
+  - .log
+  - .rst
+
+# Max file size to ingest (bytes) — protect against huge binary dumps
+max_file_bytes: 2_000_000
+
+# Index location (relative to knowledge/)
+index_dir: indexes

@@ -1,0 +1,13 @@
+domain: general
+description: System docs, catalogs, templates, and general research notes.
+roots:
+  - ../../docs
+  - ../../catalog
+  - ../../templates
+  - ../../multi_agent
+extensions:
+  - .md
+  - .txt
+  - .yaml
+  - .yml
+  - .py
