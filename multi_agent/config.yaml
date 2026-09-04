@@ -1,0 +1,125 @@
+system:
+  name: Research & Engineering Multi-Agent System
+  version: 0.6.2-knowledge-rag
+  local_first: true
+  require_human_override: true
+backends:
+  ollama:
+    enabled: true
+    base_url: http://localhost:11434/v1
+    api_key: ollama
+    timeout_s: 180
+    default_model: llama3.1:8b
+  grok:
+    enabled: false
+    base_url: https://api.x.ai/v1
+    api_key_env: XAI_API_KEY
+    timeout_s: 90
+    default_model: grok-4.6
+routing:
+  default_backend: ollama
+  default_model: null
+  roles:
+    coordinator:
+      preferred_backend: grok
+      model: grok-4.6
+      fallback_backend: ollama
+      fallback_model: llama3.1:70b
+    researcher:
+      preferred_backend: grok
+      model: grok-4.6
+      fallback_backend: ollama
+      fallback_model: llama3.1:70b
+    experiment_critic:
+      preferred_backend: ollama
+      model: llama3.1:8b
+      fallback_backend: null
+    coder:
+      preferred_backend: ollama
+      model: qwen2.5-coder:14b
+      fallback_backend: null
+    architect:
+      preferred_backend: ollama
+      model: llama3.1:70b
+      fallback_backend: null
+    residual_stream:
+      preferred_backend: grok
+      model: grok-4.6
+      fallback_backend: ollama
+      fallback_model: llama3.1:70b
+    vibration:
+      preferred_backend: ollama
+      model: llama3.1:8b
+      fallback_backend: null
+    quantum_sim:
+      preferred_backend: grok
+      model: grok-4.6
+      fallback_backend: ollama
+      fallback_model: llama3.1:70b
+    rf:
+      preferred_backend: grok
+      model: grok-4.6
+      fallback_backend: ollama
+      fallback_model: llama3.1:70b
+fallback:
+  strategy: graceful
+  max_attempts: 1
+  log_every_fallback: true
+  force_local_if_no_key: true
+safety:
+  never_log_api_keys: true
+  redact_sensitive_in_prompts: true
+  require_explicit_human_confirm:
+  - write_file
+  - execute_command
+  - hardware
+  - git_write
+  - research_note
+  - propose_patch
+  decision_protocol: strict
+sandbox:
+  allowed_roots:
+  - .
+  - ../docs
+  - ../catalog
+  - ../templates
+  - ../knowledge
+  - ../rf_residual_stream
+  - /tmp
+  allow_temp: true
+  max_write_bytes: 2000000
+audit:
+  path: audit.jsonl
+  retain_days: 90
+tools:
+  grants:
+    researcher:
+    - research_note
+    - retrieve_knowledge
+    coder:
+    - write_file
+    - execute_command
+    - retrieve_knowledge
+    architect:
+    - research_note
+    - propose_patch
+    - retrieve_knowledge
+    experiment_critic:
+    - retrieve_knowledge
+    residual_stream:
+    - research_note
+    - retrieve_knowledge
+    vibration:
+    - retrieve_knowledge
+    quantum_sim:
+    - research_note
+    - retrieve_knowledge
+    rf:
+    - research_note
+    - retrieve_knowledge
+    coordinator:
+    - write_file
+    - execute_command
+    - research_note
+    - propose_patch
+    - retrieve_knowledge
