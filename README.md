@@ -1,3 +1,7 @@
+> **Pipeline stage 4 of 4 — Real-world signal experiments**  
+> Grokking → causal residual isolation → distributed/additive representations → cross-domain residual addressing → **real-world signal experiments**.  
+> Previous: [`residual-causal-toolkit`](https://github.com/t2addonio/residual-causal-toolkit) · Map: [github.com/t2addonio](https://github.com/t2addonio)
+
 # Hybrid Lab
 
 Local-first, human-gated multi-agent research lab.
@@ -6,12 +10,13 @@ Local-first, human-gated multi-agent research lab.
 **Sibling systems:** `edge_bridge` v0.1.0-bridge · `knowledge` RAG · `rf_residual_stream`  
 **Owner:** [t2addonio](https://github.com/t2addonio)
 
-This repository is the curated snapshot of the kitchen-table research bus: a Coordinator that speaks a closed protocol, specialists that are pure text plugins, a single Gate for every side-effect, and shared retrieval across domains.
+This repository is the plant: live RF residual work, an edge bridge, and a Coordinator that speaks a closed protocol. Specialists are pure text plugins. A single Gate owns every side-effect.
 
-Related public work:
+Related public work (read these first):
 
-- Residual-stream grokking paper + code: [residual-stream-grokking](https://github.com/t2addonio/residual-stream-grokking)
-- Residual Causal Toolkit: [residual-causal-toolkit](https://github.com/t2addonio/residual-causal-toolkit)
+- Stage 1 paper + code: [residual-stream-grokking](https://github.com/t2addonio/residual-stream-grokking)
+- Stage 2 isolate / rescue / additive tributaries: [isolate-rescue-grokking](https://github.com/t2addonio/isolate-rescue-grokking)
+- Stage 3 addressing protocol: [residual-causal-toolkit](https://github.com/t2addonio/residual-causal-toolkit)
 
 ---
 
