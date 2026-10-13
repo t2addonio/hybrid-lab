@@ -6,6 +6,7 @@ Propose → human confirms → execute under sandbox.
 from __future__ import annotations
 
 import json
+import re
 import uuid
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -15,6 +16,8 @@ from typing import Any, Callable, Dict, List, Optional
 
 from .audit import get_auditor
 from .sandbox import SandboxError, get_sandbox
+
+PROPOSAL_ID_RE = re.compile(r"[A-Za-z0-9_-]{1,128}")
 
 PENDING_PATH = Path(__file__).resolve().parent.parent / "pending.json"
 
@@ -95,6 +98,8 @@ def _propose_patch(args: Dict[str, Any]) -> Any:
     proposals_dir = root / "proposals"
     proposals_dir.mkdir(parents=True, exist_ok=True)
     prop_id = args.get("id") or f"PROP-{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}"
+    if not isinstance(prop_id, str) or not PROPOSAL_ID_RE.fullmatch(prop_id):
+        raise ValueError(f"propose_patch id must match [A-Za-z0-9_-]{{1,128}}: {prop_id!r}")
     content = args.get("content", "")
     if not content.strip():
         raise ValueError("propose_patch requires non-empty content")

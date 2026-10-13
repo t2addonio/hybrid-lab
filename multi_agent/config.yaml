@@ -87,6 +87,15 @@ sandbox:
   - ../rf_residual_stream
   - /tmp
   allow_temp: true
+  # Writes (write_file, propose_patch) are limited to these roots under multi_agent/.
+  write_roots:
+  - workspace
+  - proposals
+  # Never writable, even if a write root is widened.
+  write_deny:
+  - core
+  - config.yaml
+  - approve.py
   max_write_bytes: 2000000
 audit:
   path: audit.jsonl
