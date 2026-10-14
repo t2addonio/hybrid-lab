@@ -1,4 +1,4 @@
-from specialists.base import Specialist
+from .base import Specialist
 
 
 class Researcher(Specialist):
